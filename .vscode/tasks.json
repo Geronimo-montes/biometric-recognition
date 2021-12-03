@@ -1,0 +1,35 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "pipenv",
+			"task": "add_person",
+			"problemMatcher": [],
+			"label": "pipenv: add_person",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "pipenv",
+			"task": "train_model",
+			"problemMatcher": [],
+			"label": "pipenv: train_model",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "pipenv",
+			"task": "recognize",
+			"problemMatcher": [],
+			"label": "pipenv: recognize",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

@@ -4,8 +4,21 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+imutils = "*"
+opencv-contrib-python = "*"
+pillow = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true
+PIPENV_IGNORE_VIRTUALENVS=1 
+
+[scripts]
+add_person = "python src/main.py add"
+train_model = "python src/main.py train"
+recognize = "python src/main.py run"
