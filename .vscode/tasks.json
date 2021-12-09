@@ -3,9 +3,39 @@
 	"tasks": [
 		{
 			"type": "pipenv",
-			"task": "add_person",
+			"task": "add_webcam",
 			"problemMatcher": [],
-			"label": "pipenv: add_person",
+			"label": "pipenv: add_webcam",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "pipenv",
+			"task": "add_galery",
+			"problemMatcher": [],
+			"label": "pipenv: add_galery",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "pipenv",
+			"task": "recognize_webcam",
+			"problemMatcher": [],
+			"label": "pipenv: recognize_webcam",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "pipenv",
+			"task": "recognize_galery",
+			"problemMatcher": [],
+			"label": "pipenv: recognize_galery",
 			"group": {
 				"kind": "build",
 				"isDefault": true
@@ -21,15 +51,5 @@
 				"isDefault": true
 			}
 		},
-		{
-			"type": "pipenv",
-			"task": "recognize",
-			"problemMatcher": [],
-			"label": "pipenv: recognize",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
 	]
 }

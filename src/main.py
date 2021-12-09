@@ -1,14 +1,28 @@
+import os
 import sys
-from facial_recognition.FaceGallery import add_person, recognize, train
 from enum import Enum
+from utils.utils import PATH_INPUT
 
-from facial_recognition.FaceGalleryError import InputMethodNotSelected
+from facial_recognition.add import add_from_galery
+from facial_recognition.add import add_from_webcam
+
+from facial_recognition.train import train
+
+from facial_recognition.recognize import (
+    recognize_image,
+    recognize_video,
+    recognize_webcam,
+)
 
 
 class EAccion(Enum):
-    ADD_PERSON = "add"
+    ADD_WEBCAM = "add_webcam"
+    ADD_GALERY = "add_galery"
+    #
     TRAIN_MODEL = "train"
-    RECOGNIZE = "run"
+    #
+    RECOGNIZE_WEBCAM = "run_webcam"
+    RECOGNIZE_GALERY = "run_galery"
 
 
 class Main:
@@ -16,21 +30,30 @@ class Main:
     def run(*args, **dict):
         print("Programa ejecutandose...")
 
-        try:
+        if EAccion.ADD_WEBCAM.value in args[0]:
+            add_from_webcam(name="geronimo")
 
-            if EAccion.ADD_PERSON.value in args[0]:
-                add_person(name="geronimo", video=None, activeCamara=True)
+        if EAccion.ADD_GALERY.value in args[0]:
+            path = os.path.join(PATH_INPUT, "train")
+            for _dir in os.listdir(path):
+                print(f"ANALIZANDO:... {_dir}")
+                id, name = _dir.split("_")
+                add_from_galery(name, os.path.join(path, _dir))
 
-            if EAccion.RECOGNIZE.value in args[0]:
-                recognize(video="1478_02_007_noam_chomsky.avi", activeCamara=True)
+        if EAccion.RECOGNIZE_WEBCAM.value in args[0]:
+            recognize_webcam()
 
-            if EAccion.TRAIN_MODEL.value in args[0]:
-                train()
+        if EAccion.RECOGNIZE_GALERY.value in args[0]:
+            path_test = os.path.join(PATH_INPUT, "test")
+            for img in os.listdir(path_test):
+                print(f"Analizando Imagen... {img}")
+                recognize_image(os.path.join(path_test, img))
 
-        except InputMethodNotSelected as err:
-            print(err)
+        if EAccion.TRAIN_MODEL.value in args[0]:
+            train()
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    Main.run(args)
+    # args = sys.argv[1:]
+    # Main.run(args)
+    recognize_video()
