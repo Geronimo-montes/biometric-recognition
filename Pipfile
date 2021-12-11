@@ -26,3 +26,5 @@ recognize_webcam = "python src/main.py run_webcam"
 recognize_galery = "python src/main.py run_galery"
 
 train_model = "python src/main.py train"
+
+prepare_dataset = "python src/main.py prepare_dataset"
