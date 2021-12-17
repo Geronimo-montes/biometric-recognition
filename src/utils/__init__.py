@@ -1,6 +1,6 @@
 from .utils import PATH_DATABASE
 from .utils import PATH_ROOT
-from .utils import PATH_INPUT
+from .utils import PATH_DATA
 from .utils import PATH_NAMES
 
 from .utils import H_FRAME
@@ -22,7 +22,7 @@ from .database import set_data_train
 __all__ = [
     "PATH_DATABASE",
     "PATH_ROOT",
-    "PATH_INPUT",
+    "PATH_DATA",
     "PATH_NAMES",
     "H_FRAME",
     "W_FRAME",

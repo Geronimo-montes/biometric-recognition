@@ -39,14 +39,14 @@ def add_from_galery(name: str, path_dir: str):
 
         gray = cv2.cvtColor(_img, cv2.COLOR_BGR2GRAY)
 
-        print("Detectando Rostro...")
+        print("Detectando Rostro...", flush=True, end="")
         face = detect_face(gray)
 
         if not face:
-            print("Rostro no identificado...")
+            print("Rostro no identificado...", flush=True, end="")
         else:
             for (x, y, xx, yy) in face:
-                print("Save img...")
+                print("Save img...", flush=True, end="")
                 count += 1
                 img = gray[y:yy, x:xx]
 

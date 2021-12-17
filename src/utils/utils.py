@@ -16,7 +16,7 @@ PATH_ROOT = abspath(join(dirname(__file__), "..", ".."))
 """
 
 
-PATH_INPUT = abspath(join(dirname(__file__), "..", "..", "data"))
+PATH_DATA = abspath(join(dirname(__file__), "..", "..", "data"))
 """`PATH.ROOT.DATA.INPUT`: Ruta absoluta de la ubicacion de la entrada de datos.
 """
 
@@ -57,15 +57,14 @@ MIN_SIZE = (100, 100)
 """
 
 
-
 def get_train_data():
     """Genera el conjunto de datos para entrenar el modelo.
 
     Returns
     -------
     `Tuple[list, NDArray]` : `Tuple[faces, ids]`
-        Conjunto de datos de entrenamiento para reconosimiento facial. La tupla contine la estructura 
-    """    
+        Conjunto de datos de entrenamiento para reconosimiento facial. La tupla contine la estructura
+    """
     faces, ids = [], []
 
     for img in os.listdir(PATH_DATABASE):
@@ -79,23 +78,20 @@ def get_train_data():
 
 
 def load_names_list():
-    """Lista de nombres  ordenados deacuerdo al index asignado al dataset.
-    """
+    """Lista de nombres  ordenados deacuerdo al index asignado al dataset."""
     with open(PATH_NAMES, "r") as f:
         data = json.load(f)
     return data["list"]
 
 
 def save_names_list(names: List[str]):
-    """Guarda en memoria la lista de nombres  en formato json.
-    """
+    """Guarda en memoria la lista de nombres  en formato json."""
     with open(PATH_NAMES, "w") as f:
         json.dump({"list": names}, f)
 
 
 def set_new_id(name: str):
-    """Calcula un nuevo id para un nuevo conjunto de rostros, agrega el nombre de la persona a la lista y finalmente guarda la lista en memoria.
-    """
+    """Calcula un nuevo id para un nuevo conjunto de rostros, agrega el nombre de la persona a la lista y finalmente guarda la lista en memoria."""
     data = load_names_list()
     id = len(data)
     data.append(name)

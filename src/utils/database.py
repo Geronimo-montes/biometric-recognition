@@ -7,12 +7,12 @@ from PIL import Image
 
 from face_recognize.face_recognize import detect_face
 
-from utils.utils import PATH_INPUT
+from utils.utils import PATH_DATA
 
 
 PATH_DATABASE = os.path.join(os.path.dirname(__file__), "database")
-DATA_TRAIN = os.path.join(PATH_INPUT, "train")
-DATA_TEST = os.path.join(PATH_INPUT, "test")
+DATA_TRAIN = os.path.join(PATH_DATA, "train")
+DATA_TEST = os.path.join(PATH_DATA, "test")
 
 
 def set_data_train():

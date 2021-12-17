@@ -8,7 +8,7 @@ import numpy as np
 from face_recognize.face_recognize import detect_face
 
 from utils.utils import H_FRAME
-from utils.utils import PATH_INPUT
+from utils.utils import PATH_DATA
 from utils.utils import W_FRAME
 from utils.utils import load_names_list
 
@@ -17,8 +17,8 @@ from utils.models import get_LBPHFaceRecognizer
 
 
 def recognize_video():
-    for name in os.listdir(PATH_INPUT):
-        file = os.path.join(PATH_INPUT, name)
+    for name in os.listdir(PATH_DATA):
+        file = os.path.join(PATH_DATA, name)
 
         fd = open(file, "rb")
         f = np.fromfile(fd, dtype=np.uint8, count=576 * 768)
@@ -47,7 +47,7 @@ def recognize_image(path_img: str):
     face = detect_face(gray)
 
     if not face:
-        print("None")
+        print("None", flush=True, end="")
     else:
         for (x, y, xx, yy) in face:
             _gray = gray[y:yy, x:xx]
@@ -62,12 +62,12 @@ def recognize_image(path_img: str):
 
             confid = "{:3.1f}%".format(round(100 - confid))
 
-            return(f"NAME: {id},CONFID:{confid}")
+            return f"NAME: {id},CONFID:{confid}"
             # cv2.rectangle(_img, (x, y), (xx, yy), color, 2)
             # cv2.putText(_img, str(id), (x + 5, y - 5), 2, 1, color, 4)
             # cv2.putText(_img, str(confid), (x + 5, yy - 5), 2, 1, color, 2)
 
-        # print(f"{id} --> {confid}")
+        # print(f"{id} --> {confid}", flush=True, end="")
     # cv2.imshow("frame", _img)
     # k = cv2.waitKey(0) & 0xFF  # Press 'ESC' for exiting video
 
