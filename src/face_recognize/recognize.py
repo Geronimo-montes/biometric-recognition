@@ -48,6 +48,7 @@ def recognize_image(path_img: str):
 
     if not face:
         print("None", flush=True, end="")
+        return "unknown", "0.0"
     else:
         for (x, y, xx, yy) in face:
             _gray = gray[y:yy, x:xx]
@@ -62,7 +63,7 @@ def recognize_image(path_img: str):
 
             confid = "{:3.1f}%".format(round(100 - confid))
 
-            return f"NAME: {id},CONFID:{confid}"
+            return id, confid
             # cv2.rectangle(_img, (x, y), (xx, yy), color, 2)
             # cv2.putText(_img, str(id), (x + 5, y - 5), 2, 1, color, 4)
             # cv2.putText(_img, str(confid), (x + 5, yy - 5), 2, 1, color, 2)

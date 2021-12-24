@@ -19,6 +19,8 @@ from .models import get_eye_detector
 
 from .database import set_data_train
 
+from .argumentos import load_args
+
 __all__ = [
     "PATH_DATABASE",
     "PATH_ROOT",
@@ -39,4 +41,6 @@ __all__ = [
     "get_eye_detector",
     #
     "set_data_train",
+    #
+    "load_args",
 ]

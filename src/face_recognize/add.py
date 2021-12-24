@@ -66,6 +66,7 @@ def add_from_galery(name: str, path_dir: str):
 
 
 def add_from_webcam(name: str):
+    print("Add Video To Model...", flush=True, end="")
     valid()
     count = 0
     id = set_new_id(name)
