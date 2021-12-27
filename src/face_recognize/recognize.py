@@ -35,44 +35,20 @@ def recognize_image(path_img: str):
     names = load_names_list()
 
     _img = cv2.imread(path_img)
-    # _img = cv2.resize(_img, (0, 0), fx=1.5, fy=1.5, interpolation=cv2.INTER_LANCZOS4)
-    # INTER_NEAREST
-    # INTER_LINEAR
-    # INTER_AREA
-    # INTER_CUBIC
-    # INTER_LANCZOS4
-
     gray = cv2.cvtColor(_img, cv2.COLOR_BGR2GRAY)
-
     face = detect_face(gray)
 
     if not face:
-        print("None", flush=True, end="")
-        return "unknown", "0.0"
-    else:
-        for (x, y, xx, yy) in face:
-            _gray = gray[y:yy, x:xx]
-            id, confid = LBPHFaceRecognizer.predict(_gray)
+        return "unknown", 0
 
-            if confid < THRESHOLD:
-                id = names[id]
-                color = (0, 255, 0)  # verde
-            else:
-                id = "unknown"
-                color = (0, 0, 255)  # rojo
+    for (x, y, xx, yy) in face:
+        img = np.array(gray[y:yy, x:xx], "uint8")
+        id, confid = LBPHFaceRecognizer.predict(img)
 
-            confid = "{:3.1f}%".format(round(100 - confid))
-
-            return id, confid
-            # cv2.rectangle(_img, (x, y), (xx, yy), color, 2)
-            # cv2.putText(_img, str(id), (x + 5, y - 5), 2, 1, color, 4)
-            # cv2.putText(_img, str(confid), (x + 5, yy - 5), 2, 1, color, 2)
-
-        # print(f"{id} --> {confid}", flush=True, end="")
-    # cv2.imshow("frame", _img)
-    # k = cv2.waitKey(0) & 0xFF  # Press 'ESC' for exiting video
-
-    # imagen.show(f"{id} --> {confid}")
+        if confid < THRESHOLD:
+            return names[id], round(100 - confid)
+        else:
+            return "unknown", 0
 
 
 def recognize_webcam():
@@ -85,8 +61,8 @@ def recognize_webcam():
 
     while True:
         ret, frm = cam.read()
-        frame_gray = cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY)
-        face = detect_face(frame_gray)
+        gray = cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY)
+        face = detect_face(gray)
 
         if not face:
             cv2.imshow("frame", frm)
@@ -94,7 +70,7 @@ def recognize_webcam():
             continue
 
         for (x, y, xx, yy) in face:
-            img = np.array(frame_gray[y:yy, x:xx], "uint8")
+            img = np.array(gray[y:yy, x:xx], "uint8")
             id, confid = LBPHFaceRecognizer.predict(img)
 
             if confid < THRESHOLD:

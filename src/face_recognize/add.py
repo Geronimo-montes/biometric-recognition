@@ -29,6 +29,7 @@ def add_from_galery(name: str, path_dir: str):
     valid()
     count = 0
     id = set_new_id(name)
+    name = name.replace("_", "-")
     _faces, _ids = [], []
 
     for img in os.listdir(path_dir):

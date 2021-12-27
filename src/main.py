@@ -68,6 +68,7 @@ if __name__ == "__main__":
 
         prepare_data(args.name)
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
+
         add_from_galery(args.name, PATH_DIR_TEMP)
         print(f"Proceso terminado...", flush=True, end="")
 
@@ -80,15 +81,25 @@ if __name__ == "__main__":
         print("Run Recgnize Face From Galery...", flush=True, end="\t")
         prepare_data()
 
-        res = []
+        names, prom_confid = [], []
+
         for img in os.listdir(PATH_DIR_TEMP):
             print(f"Analizando Imagen... {img}", flush=True, end="")
-            id, confid = recognize_image(os.path.join(PATH_DIR_TEMP, img))
-            if id != "unknown":
-                res.append((id, confid))
 
-        with open("resultados.json", "w") as f:
-            json.dump({"list": res}, f)
+            id, confid = recognize_image(os.path.join(PATH_DIR_TEMP, img))
+
+            if id != "unknown":
+                names.append(id)
+                prom_confid.append(confid)
+
+        if len(names) == 0:
+            print("unknown", flush=True, end="")
+        elif len(names) != names.count(names[0]):
+            print("unknown", flush=True, end="")
+        else:
+            print(names[0], flush=True, end="")
+        # with open("resultados.json", "w") as f:
+        #     json.dump(res, f)
 
     ######################################################################################
     if args.train:

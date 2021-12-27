@@ -94,6 +94,7 @@ def set_new_id(name: str):
     """Calcula un nuevo id para un nuevo conjunto de rostros, agrega el nombre de la persona a la lista y finalmente guarda la lista en memoria."""
     data = load_names_list()
     id = len(data)
+    # name  =name.replace("_", " ").capitalize()
     data.append(name)
     save_names_list(data)
     return id
