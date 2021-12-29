@@ -14,6 +14,7 @@
     "njpwerner.autodocstring",
     "jprestidge.theme-material-theme",
     "wayou.vscode-todo-highlight",
-    "visualstudioexptteam.vscodeintellicode"
+    "visualstudioexptteam.vscodeintellicode",
+    "thomascsd.vscode-readme-pattern"
   ]
 }
