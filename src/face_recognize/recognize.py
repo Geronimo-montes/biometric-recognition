@@ -45,10 +45,13 @@ def recognize_image(path_img: str):
         img = np.array(gray[y:yy, x:xx], "uint8")
         id, confid = LBPHFaceRecognizer.predict(img)
 
+        name = names[id] if id > -1 else str(id)
         cv2.rectangle(_img, (x, y), (xx, yy), (0, 255, 0), 2)
+        cv2.putText(_img, name, (x + 5, y - 5), 2, 1, (0, 255, 0), 4)
+        cv2.putText(_img, str(confid), (x + 5, yy - 5), 2, 1, (0, 255, 0), 2)
 
         cv2.imshow("imagen", _img)
-        cv2.waitKey(100)
+        cv2.waitKey(1000)
 
         if confid < THRESHOLD:
             return names[id], round(100 - confid)

@@ -14,16 +14,11 @@ black="*"
 [requires]
 python_version = "3.9"
 
-[pipenv]
-allow_prereleases = true
-
 [scripts]
-add_webcam = "python src/main.py add_webcam"
-add_galery = "python src/main.py add_galery"
+add_webcam = "python src/main.py --add_webcam --name nombre_persona"
+add_galery = "python src/main.py --add_galery --name nombre_persona"
 
-recognize_webcam = "python src/main.py run_webcam"
-recognize_galery = "python src/main.py run_galery"
+recognize_webcam = "python src/main.py --recognize_webcam"
+recognize_galery = "python src/main.py --recognize_galery"
 
-train_model = "python src/main.py train"
-
-prepare_dataset = "python src/main.py prepare_dataset"
+train_model = "python src/main.py --train"

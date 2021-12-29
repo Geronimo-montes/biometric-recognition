@@ -4,15 +4,13 @@ from utils.argumentos import load_args
 
 from utils.utils import PATH_DATA
 
-from face_recognize.add import add_from_galery
+from face_recognize.add import add_from_galery, add_from_galery_direct_to_database
 from face_recognize.add import add_from_webcam
 
 from face_recognize.train import train
 
 from face_recognize.recognize import recognize_image
 from face_recognize.recognize import recognize_webcam
-
-TEMP = os.path.join(PATH_DATA, "temp")
 
 if __name__ == "__main__":
     args = load_args()
@@ -27,7 +25,13 @@ if __name__ == "__main__":
         if not args.name:
             raise Exception("No Provider Name")
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
-        add_from_galery(args.name, TEMP)
+        add_from_galery(args.name, PATH_DATA)
+
+    elif args.add_galery_to_db:
+        if not args.name:
+            raise Exception("No Provider Name")
+        print(f"Analizando galeria: {args.name}...", flush=True, end="")
+        add_from_galery_direct_to_database(args.name, PATH_DATA)
 
     elif args.recognize_webcam:
         recognize_webcam()
@@ -35,9 +39,9 @@ if __name__ == "__main__":
     elif args.recognize_galery:
         print("Run Recgnize Face From Galery...", flush=True, end="\t")
         names, prom_confid = [], []
-        for img in os.listdir(TEMP):
+        for img in os.listdir(PATH_DATA):
             print(f"Analizando Imagen... {img}", flush=True, end="")
-            id, confid = recognize_image(os.path.join(TEMP, img))
+            id, confid = recognize_image(os.path.join(PATH_DATA, img))
             if id != "unknown":
                 names.append(id)
                 prom_confid.append(confid)
@@ -52,6 +56,6 @@ if __name__ == "__main__":
     elif args.train:
         train()
 
-    # CLEAN DIR TEMP
-    for f in os.listdir(TEMP):
-        os.remove(os.path.join(TEMP, f))
+    # CLEAN DIR PATH_DATA
+    for f in os.listdir(PATH_DATA):
+        os.remove(os.path.join(PATH_DATA, f))

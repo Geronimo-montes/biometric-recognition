@@ -12,27 +12,28 @@ from os.path import join
 
 
 PATH_ROOT = abspath(join(dirname(__file__), "..", ".."))
-"""`PATH.ROOT`: Ruta absoluta de la ubicacion del proyecto.
+"""`PATH.ROOT`: Path del directorio `BIOMETRIC_RECOGNITION`.
 """
 
 
-PATH_DATA = abspath(join(dirname(__file__), "..", "..", "data"))
-"""`PATH.ROOT.DATA.INPUT`: Ruta absoluta de la ubicacion de la entrada de datos.
+# PATH_DATA = abspath(join(dirname(__file__), "..", "..", "data"))
+PATH_DATA = abspath(join(dirname(__file__), "..", "..", "..", "data"))
+"""`PATH.ROOT.DATA.INPUT`: Path del directorio de entrada de datos.
 """
 
 
 PATH_DATABASE = abspath(join(dirname(__file__), "..", "..", "model", "database"))
-"""`PATH.ROOT.MODEL.DATASET`: Ruta absoluta de la ubicacion de la carpeta data.
+"""`PATH.ROOT.MODEL.DATASET`: Path del directorio de base de datos del modelo.
 """
 
 
 PATH_MODEL = abspath(join(dirname(__file__), "..", "..", "model", "modeloLBPHFace.xml"))
-"""`PATH.ROOT.MODEL.MODEL`: Ruta absoluta de la ubicacion del modelo entrenado.
+"""`PATH.ROOT.MODEL.MODEL`: Path del arvhivo *.xml que contiene el modelo.
 """
 
 
 PATH_NAMES = abspath(join(dirname(__file__), "..", "..", "model", "names.json"))
-"""`PATH.ROOT.MODEL.NAMES`: Ruta absoluta del archivo donde se almacenan los nombres.
+"""`PATH.ROOT.MODEL.NAMES`: Path del archivo *.json que contiene nombres agregados al modelo.
 """
 
 

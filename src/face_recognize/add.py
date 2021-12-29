@@ -2,9 +2,10 @@
 # coding=utf-8
 
 import os
+import shutil
+
 import cv2
 import numpy as np
-from PIL import Image
 from cv2 import VideoCapture
 
 from face_recognize.train import train
@@ -64,6 +65,24 @@ def add_from_galery(name: str, path_dir: str):
 
     cv2.destroyAllWindows()
     train((_faces, np.array(_ids)))
+
+
+def add_from_galery_direct_to_database(name: str, path_dir: str):
+    valid()
+
+    count = 0
+    id = set_new_id(name)
+    name = name.replace("_", "-")
+    _faces, _ids = [], []
+
+    for img in os.listdir(path_dir):
+        src = os.path.join(path_dir, img)
+        dst = os.path.join(PATH_DATABASE, f"{id}_{name}_{count}.jpg")
+        print("Save img...", flush=True, end="")
+        count += 1
+        shutil.move(src, dst)
+
+    train()
 
 
 def add_from_webcam(name: str):

@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "adpyke.codesnap",
+    "gerane.theme-dark-dracula",
+    "donjayamanne.githistory",
+    "knisterpeter.vscode-github",
+    "magicstack.magicpython",
+    "pkief.material-icon-theme",
+    "elanandkumar.el-vsc-product-icon-theme",
+    "johnpapa.vscode-peacock",
+    "federicovarela.pipenv-scripts",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "njpwerner.autodocstring",
+    "jprestidge.theme-material-theme",
+    "wayou.vscode-todo-highlight",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}

@@ -10,6 +10,8 @@ def load_args():
 
     `[ -ag, --add_galery ]`:  Add person from galery
 
+    `[ -agdb, --add_galery_to_db ]`:  Add person from galery direct to db
+
     `[ -rw, --recognize_webcam ]`:  Recognoze person from webcam
 
     `[ -rg, --recognize_galery ]`:  Recognoze person from galery
@@ -33,6 +35,12 @@ def load_args():
         "-ag",
         "--add_galery",
         help="Add person from galery",
+        action="store_true",
+    )
+    parse.add_argument(
+        "-agdb",
+        "--add_galery_to_db",
+        help="Add person from galery direct to database",
         action="store_true",
     )
     # RECOGNIZE METODS
