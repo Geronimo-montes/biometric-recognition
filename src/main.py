@@ -1,3 +1,4 @@
+import json
 import os
 
 from utils.argumentos import load_args
@@ -25,13 +26,22 @@ if __name__ == "__main__":
         if not args.name:
             raise Exception("No Provider Name")
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
-        add_from_galery(args.name, PATH_DATA)
+        name, count, id = add_from_galery(args.name, PATH_DATA)
+
+        with open('resultado.json', "w") as f:
+            json.dump({"name": name, "num_files": count, "id": id}, f)
+
+
 
     elif args.add_galery_to_db:
         if not args.name:
             raise Exception("No Provider Name")
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
-        add_from_galery_direct_to_database(args.name, PATH_DATA)
+        
+        name, count, id = add_from_galery_direct_to_database(args.name, PATH_DATA)
+        
+        with open('resultado.json', "w") as f:
+            json.dump({"name": name, "num_files": count, "index": id}, f)
 
     elif args.recognize_webcam:
         recognize_webcam()

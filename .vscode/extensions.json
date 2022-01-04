@@ -4,7 +4,6 @@
     "gerane.theme-dark-dracula",
     "donjayamanne.githistory",
     "knisterpeter.vscode-github",
-    "magicstack.magicpython",
     "pkief.material-icon-theme",
     "elanandkumar.el-vsc-product-icon-theme",
     "johnpapa.vscode-peacock",
@@ -15,6 +14,7 @@
     "jprestidge.theme-material-theme",
     "wayou.vscode-todo-highlight",
     "visualstudioexptteam.vscodeintellicode",
-    "thomascsd.vscode-readme-pattern"
+    "thomascsd.vscode-readme-pattern",
+    "magicstack.magicpython"
   ]
 }

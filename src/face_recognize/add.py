@@ -65,6 +65,8 @@ def add_from_galery(name: str, path_dir: str):
 
     cv2.destroyAllWindows()
     train((_faces, np.array(_ids)))
+    
+    return name, count, id
 
 
 def add_from_galery_direct_to_database(name: str, path_dir: str):
@@ -83,6 +85,8 @@ def add_from_galery_direct_to_database(name: str, path_dir: str):
         shutil.move(src, dst)
 
     train()
+
+    return name, count, id
 
 
 def add_from_webcam(name: str):
