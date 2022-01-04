@@ -17,35 +17,34 @@ if __name__ == "__main__":
     args = load_args()
     print("Run Face Model...", flush=True, end="\t")
 
+    #######################################################################
     if args.add_webcam:
         if not args.name:
             raise Exception("No Provider Name")
         add_from_webcam(name=args.name)
-
+    #######################################################################
     elif args.add_galery:
         if not args.name:
             raise Exception("No Provider Name")
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
         name, count, id = add_from_galery(args.name, PATH_DATA)
 
-        with open('resultado.json', "w") as f:
+        with open("resultado.json", "w") as f:
             json.dump({"name": name, "num_files": count, "id": id}, f)
-
-
-
+    #######################################################################
     elif args.add_galery_to_db:
         if not args.name:
             raise Exception("No Provider Name")
         print(f"Analizando galeria: {args.name}...", flush=True, end="")
-        
-        name, count, id = add_from_galery_direct_to_database(args.name, PATH_DATA)
-        
-        with open('resultado.json', "w") as f:
-            json.dump({"name": name, "num_files": count, "index": id}, f)
 
+        name, count, id = add_from_galery_direct_to_database(args.name, PATH_DATA)
+
+        with open("resultado.json", "w") as f:
+            json.dump({"name": name, "num_files": count, "index": id}, f)
+    #######################################################################
     elif args.recognize_webcam:
         recognize_webcam()
-
+    #######################################################################
     elif args.recognize_galery:
         print("Run Recgnize Face From Galery...", flush=True, end="\t")
         names, prom_confid = [], []
@@ -62,9 +61,10 @@ if __name__ == "__main__":
             print("unknown", flush=True, end="")
         else:
             print(names[0], flush=True, end="")
-
+    #######################################################################
     elif args.train:
         train()
+    #######################################################################
 
     # CLEAN DIR PATH_DATA
     for f in os.listdir(PATH_DATA):

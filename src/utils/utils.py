@@ -22,17 +22,19 @@ PATH_DATA = abspath(join(dirname(__file__), "..", "..", "..", "data"))
 """
 
 
-PATH_DATABASE = abspath(join(dirname(__file__), "..", "..", "model", "database"))
+PATH_DATABASE = abspath(join(dirname(__file__), "..", "..", "..", "model", "database"))
 """`PATH.ROOT.MODEL.DATASET`: Path del directorio de base de datos del modelo.
 """
 
 
-PATH_MODEL = abspath(join(dirname(__file__), "..", "..", "model", "modeloLBPHFace.xml"))
+PATH_MODEL = abspath(
+    join(dirname(__file__), "..", "..", "..", "model", "modeloLBPHFace.xml")
+)
 """`PATH.ROOT.MODEL.MODEL`: Path del arvhivo *.xml que contiene el modelo.
 """
 
 
-PATH_NAMES = abspath(join(dirname(__file__), "..", "..", "model", "names.json"))
+PATH_NAMES = abspath(join(dirname(__file__), "..", "..", "..", "model", "names.json"))
 """`PATH.ROOT.MODEL.NAMES`: Path del archivo *.json que contiene nombres agregados al modelo.
 """
 
