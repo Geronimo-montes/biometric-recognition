@@ -5,14 +5,14 @@ import random
 import numpy as np
 from PIL import Image
 
-from face_recognize.face_recognize import detect_face
+from model.recognize import detect_face
 
-from utils.utils import PATH_DATA
+from utils.settings import PATH_DATA_MODEL
 
 
 PATH_DATABASE = os.path.join(os.path.dirname(__file__), "database")
-DATA_TRAIN = os.path.join(PATH_DATA, "train")
-DATA_TEST = os.path.join(PATH_DATA, "test")
+DATA_TRAIN = os.path.join(PATH_DATA_MODEL, "train")
+DATA_TEST = os.path.join(PATH_DATA_MODEL, "test")
 
 
 def set_data_train():

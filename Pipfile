@@ -4,9 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-imutils = "*"
-opencv-contrib-python = "*"
-pillow = "*"
+imutils = "==0.5.4"
+opencv-contrib-python = "==4.5.5.62"
+pillow = "==8.4.0"
+black = "==21.12b0"
+click = "==8.0.3"
+colorama = "==0.4.4"
+mypy-extensions = "==0.4.3"
+numpy = "==1.21.5"
+pathspec = "==0.9.0"
+platformdirs = "==2.4.0"
+tomli = "==1.2.3"
+typing-extensions = "==4.0.1"
 
 [dev-packages]
 black="*"
@@ -15,10 +24,12 @@ black="*"
 python_version = "3.9"
 
 [scripts]
-add_webcam = "python src/main.py --add_webcam --name nombre_persona"
-add_galery = "python src/main.py --add_galery --name nombre_persona"
+aw = "python src/main.py --add_webcam --name "
+ag = "python src/main.py --add_galery --name "
+rw = "python src/main.py --recognize_webcam"
+rg = "python src/main.py --recognize_galery"
+tm = "python src/main.py --train"
+rm = "rm -rf model/"
 
-recognize_webcam = "python src/main.py --recognize_webcam"
-recognize_galery = "python src/main.py --recognize_galery"
-
-train_model = "python src/main.py --train"
+[pipenv]
+allow_prereleases = true
